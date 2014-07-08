@@ -43,7 +43,7 @@ var Shell = {
 
 			//
 			// application shell
-			// 
+			//
 
 			body.html(app.templates.main({}));
 
@@ -73,10 +73,10 @@ var Shell = {
 
 			//
 			// Login (temporary just for testing)
-			// 
+			//
 
 			body.append(app.templates.login({
-				username: config.get('username'), 
+				username: config.get('username'),
 				password: config.get('password')
 			}));
 
@@ -105,7 +105,7 @@ var Shell = {
 			//
 			// Buttons
 			//
-			
+
 			self._syncbutton = $('#refresh-button');
 
 		});
@@ -118,16 +118,30 @@ var Shell = {
 		var self = this;
 
 		var msglist = $('#messages-list');
+
+		// Sort messages by date desc
+		messages.sort(function(a, b) {
+			if (moment(a.date).isSame(moment(b.date))) {
+				return 0;
+			}
+			else if (moment(a.date).isAfter(moment(b.date))) {
+				return -1;
+			};
+
+			return 1;
+		});
+
 		$.each(messages, function(i, m)
 		{
-			var txt = (m.text || m.html).substr(0, 50);
+			//var txt = (m.text || m.html).substr(0, 50);
+			var txt = "Placeholder text";
 
 			msglist.append(app.templates.row({
 				id: i,
 				account: 'Google Mail',
 				icon: '',
 				date: moment(m.date).calendar(),
-				subject: m.subject,
+				subject: m.title,
 				snipet: htmlToText.fromString(txt),
 				read: m.read,
 				starred: m.starred,
@@ -199,7 +213,7 @@ var Shell = {
 					tlsOptions: { rejectUnauthorized: false }
 				}
 			}
-		];		
+		];
 	}
 };
 
