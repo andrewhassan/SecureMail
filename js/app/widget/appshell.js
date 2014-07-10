@@ -133,15 +133,15 @@ var Shell = {
 
 		$.each(messages, function(i, m)
 		{
-			//var txt = (m.text || m.html).substr(0, 50);
-			var txt = "Placeholder text";
+			var txt = (m.text || m.html).substr(0, 50);
+			// var txt = "Placeholder text";
 
 			msglist.append(app.templates.row({
 				id: i,
 				account: 'Google Mail',
 				icon: '',
 				date: moment(m.date).calendar(),
-				subject: m.title,
+				subject: m.subject,
 				snipet: htmlToText.fromString(txt),
 				read: m.read,
 				starred: m.starred,

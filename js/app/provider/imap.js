@@ -1,7 +1,9 @@
 var BaseProvider = require('./base');
 var Util = require('util');
 var IMAP = require('imap');
-var inbox = require("inbox");
+var inbox = require('inbox');
+var stream_to = require('stream-to');
+var MP = require('mailparser').MailParser;
 
 var ImapProvider = function()
 {
@@ -9,7 +11,6 @@ var ImapProvider = function()
 };
 
 Util.inherits(ImapProvider, BaseProvider);
-
 
 ImapProvider.prototype = {
 	getInfo: function()
@@ -96,7 +97,7 @@ ImapProvider.prototype = {
 	openInbox: function(callback)
 	{
 		var self = this;
-		self.imapConnection.openMailbox('INBOX', callback);
+		self.imapConnection.openMailbox('INBOX', {readOnly: true}, callback);
 	},
 
 	prepare: function() {
@@ -117,12 +118,37 @@ ImapProvider.prototype = {
 						return;
 					}
 
+					var num_finished = 0;
+					self.messages = [];
+
 					// List 10 messages for now
 					self.imapConnection.listMessages(-10, 10, function(err, messages) {
 						if (err) { console.log ("There was an error fetching messages: " + err); }
-						self.messages = messages;
-						def.resolve(self);
-					})
+
+						var num_messages = messages.length,
+							loaded_messages = 0;
+
+						// Load the content for each message
+						for (var m in messages) {
+							var message = messages[m],
+								mailparser = new MP({
+									streamAttachments: true
+								}),
+								message_stream = self.imapConnection.createMessageStream(message.UID).pipe(mailparser);
+
+				      mailparser.on('end', function(email) {
+				      	num_finished++;
+				        message.html = email.html;
+				        message.text = email.text;
+
+				        self.messages.push(email);
+
+				        if (num_finished === messages.length) {
+				        	def.resolve(self);
+				        }
+				      });
+						}
+					});
 
 					// var f = self.imap.seq.fetch('1:*', { bodies: '' });
 					// self.messages = [];
