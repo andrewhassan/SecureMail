@@ -36,7 +36,7 @@ shell.init().then(function()
 					def.resolve(provider);
 				}
 			);
-			
+
 		});
 		providers.push(d);
 	});
