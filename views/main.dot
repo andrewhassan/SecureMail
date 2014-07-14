@@ -5,9 +5,9 @@
 			<ul id="filters">
 				<li class="all filter selected">
 					<i class="icon fa fa-bars"></i>
-					<span class="title">All</span>
+					<span class="title">All Messages</span>
 				</li>
-				<li class="unread filter">
+				<!-- <li class="unread filter">
 					<i class="icon fa fa-circle"></i>
 					<span class="title">Unread</span>
 				</li>
@@ -18,18 +18,13 @@
 				<li class="important filter">
 					<i class="icon fa fa-exclamation"></i>
 					<span class="title">Important</span>
-				</li>
+				</li>-->
 			</ul>
 
 			<ul id="labels">
 			</ul>
-			
-			<p class="empty-message">You have no accounts. Click on the + button below to add some.</p>
 
-			<div class="bar">
-				<button id="refresh-button" title="Refresh"></button>
-				<button id="add-button" title="Add Account"><i class="icon fa fa-plus-circle"></i></button>
-			</div>
+			<p class="empty-message">You have no accounts. Click on the + button below to add some.</p>
 		</div>
 
 		<div id="right-side" class="splitter">
@@ -39,12 +34,7 @@
 				</ul>
 
 				<div class="bar">
-					<button id="mark-all-as-read-button" title="Mark All As Read"><i class="icon fa fa-check-circle"></i></button>
-					
-					<div id="item-count"></div>
-
-					<input id="search-input" placeholder="Search Messages">
-					<button id="search-button" title="Search"><i class="icon fa fa-search"></i></button>
+					<button id="load-more-button" title="Load More"><i class="icon fa fa-download"></i> </button>
 				</div>
 			</div>
 
