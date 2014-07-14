@@ -121,8 +121,8 @@ ImapProvider.prototype = {
 					var num_finished = 0;
 					self.messages = [];
 
-					// List 10 messages for now
-					self.imapConnection.listMessages(-10, 10, function(err, messages) {
+					// List 30 messages for now
+					self.imapConnection.listMessages(-30, 30, function(err, messages) {
 						if (err) { console.log ("There was an error fetching messages: " + err); }
 
 						var num_messages = messages.length,
