@@ -23,8 +23,8 @@ input, textarea { font-family: "Ubuntu", "Helvetica", "Arial", sans-serif; }
 #sidebar { height: 100%; width: 200px; min-width: 20px; background-color: #eaeaea; }
 #sidebar * { -webkit-user-select: none; }
 #sidebar ul { margin: 0; padding: 0; }
-#sidebar #filters { display: block; border-bottom: 1px dashed rgba(0, 0, 0, 0.1); }
-#sidebar #labels { display: block; border-top: 1px dashed rgba(255, 255, 255, 0.6); padding-top: 8px; }
+#sidebar #filters { display: block; /*border-bottom: 1px dashed rgba(0, 0, 0, 0.1);*/ }
+#sidebar #labels { display: block; /*border-top: 1px dashed rgba(255, 255, 255, 0.6);*/ padding-top: 8px; }
 #sidebar .empty-message { display: none; font-size: 13px; font-family: "Ubuntu Light", "Ubuntu", "Helvetica", "Arial", sans-serif; text-shadow: 0 0 1px rgba(0, 0, 0, 0.01), 0 1px 0 white; margin-top: 140px; padding: 0 20px; line-height: 20px; color: #555555; }
 
 #messages { min-width: 250px; height: 100%; width: 300px; background-color: white; }
