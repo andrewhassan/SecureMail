@@ -83,7 +83,7 @@ var key = ["-----BEGIN PGP PUBLIC KEY BLOCK-----",
 // debugger;
 
 var pk = pgp.key.readArmored(key);
-//var pgpMessage = pgp.encryptMessage(pk.keys, 'Hello, World!');
+var pgpMessage = pgp.encryptMessage(pk.keys, 'Hello, World!');
 
 debugger;
 
@@ -191,11 +191,6 @@ $('#compose-email-button').on('click', function() {
 			pgp = true,
 			final_recipients = [];
 
-		if (recipients.length > 1) {
-			alert("Only 1 recipient supported right now.");
-			return;
-		}
-
 		// If there are any non-keybase users, then do not use PGP
 		for (var r in recipients) {
 			var recipient = recipients[r];
@@ -215,31 +210,39 @@ $('#compose-email-button').on('click', function() {
 				}
 				catch(err) {
 					alert("There was an error parsing the recipients. Double check that they are entered in correctly.");
+					return;
 				}
 			}
 		}
 
-		debugger;
-
-		if (email_recipients.length > 0 && !confirm("Note: There is one or more non-keybase users in your recipient list. The email WILL NOT be using PGP. Do you wish to continue?")) {
+		if (!pgp && !confirm("Note: There is one or more non-keybase users in your recipient list. ONLY users using keybase will received an encrypted message. Everyone else will be sent PLAIN TEXT. Do you wish to continue?")) {
 			return false;
 		}
 
-		var public_keys;
-		$.ajax({
-			async: false,
-			type: "GET",
-			url: "https://keybase.io/_/api/1.0/user/lookup.json?usernames=" + keybase_recipients.join(','),
-			success: function(data) {
-				public_keys = data;
+		for (var i in final_recipients) {
+			var recipient = final_recipients[i];
+			// plain email
+			if (recipient.keybase === undefined) {
+				console.log(recipient.email + " wants a plain email");
 			}
-		});
+			else {
+				var public_key;
+				$.ajax({
+					async: false,
+					type: "GET",
+					url: "https://keybase.io/_/api/1.0/user/lookup.json?usernames=" + recipient.keybase,
+					success: function(data) {
+						public_key = data;
+					}
+				});
 
-		for (var i in public_keys.them) {
-			var r = public_keys.them[i];
-			final_recipients.push({
-				email: ''
-			})
+				if (public_key === null || public_key.them === null || public_key.them[0] === null) {
+					alert("There was a problem finding keybase user: " + recipient.keybase);
+					return;
+				}
+
+				console.log(recipient.email + " is hiding something from the NSA...PK: " + public_key.them[0])
+			}
 		}
 
 		console.log("Sending email");

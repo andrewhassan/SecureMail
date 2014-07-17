@@ -1,6 +1,7 @@
 var moment = require('moment');
 var htmlToText = require('html-to-text');
 var config = require('../core/preferences');
+var global_password = '';
 
 var Shell = {
 
@@ -77,7 +78,8 @@ var Shell = {
 
 			body.append(app.templates.login({
 				username: config.get('username'),
-				password: config.get('password')
+				password: '',
+				keybase_username: config.get('keybase_username')
 			}));
 
 			$('#loading form').on('submit', function()
@@ -86,10 +88,13 @@ var Shell = {
 				$('#overlay').show();
 
 				var username = $('#loading #username').val();
+				var keybase_username = $('#loading #keybase_username').val();
 				var password = $('#loading #password').val();
 
 				config.set('username', username);
-				config.set('password', password);
+				config.set('keybase_username', keybase_username);
+				global_password = password;
+				// config.set('password', password);
 				config.save();
 
 				self.sync.start();
@@ -206,7 +211,8 @@ var Shell = {
 				label: 'Gmail Account',
 				options: {
 					user: config.get('username'),
-					password: config.get('password'),
+					password: global_password,
+					keybase_username: config.get('keybase_username'),
 					host: 'imap.gmail.com',
 					port: 993,
 					tls: true,
