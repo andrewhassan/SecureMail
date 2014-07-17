@@ -18,7 +18,8 @@
     "node-mbox": "~0.0.2",
     "inbox": "~1.1.57",
     "stream-to": "~0.3.1",
-    "mailparser": "~0.4.4"
+    "mailparser": "~0.4.4",
+    "openpgp": "~0.7.1"
   },
   "devDependencies": {
     "mocha": "~1.17.1",
