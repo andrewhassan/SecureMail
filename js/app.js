@@ -4,6 +4,8 @@ var global_providers = [];
 
 var pgp_module = require('openpgp');
 var EP = require('exec-plan').ExecPlan;
+var nodemailer = require('nodemailer');
+var transport = null;
 
 var app = {
 	templates: require('dot').process({ path: "./views"}),
@@ -159,7 +161,7 @@ $('#compose-email-button').on('click', function() {
 			var recipient = final_recipients[i];
 			// plain email
 			if (recipient.keybase === undefined) {
-				console.log(recipient.email + " wants a plain email");
+				console.log("Sending unencrypted message to: " + recipient.email);
 			}
 			else {
 				var public_key;
@@ -182,20 +184,46 @@ $('#compose-email-button').on('click', function() {
 				}
 
 				var public_key_bundle = public_key.them[0].public_keys.primary.bundle;
+				var recipient_closure = recipient;
 				getPrivateKey(shell.settings()[0].options.keybase_username, function(private_key) {
 					var pgp_public_key = pgp_module.key.readArmored(public_key_bundle);
 					var pgp_private_key = pgp_module.key.readArmored(private_key).keys[0];
 					pgp_private_key.decrypt(shell.settings()[0].options.keybase_password);
 					var message = pgp_module.signAndEncryptMessage(pgp_public_key.keys, pgp_private_key, "test");
-					debugger;
-				});
-				//var pgpMessage = pgp_module.encryptMessage(pk.keys, 'Hello, World!');
 
-				console.log(recipient.email + " is hiding something from the NSA...PK: " + public_key_bundle);
+					console.log("Sending encrypted message to: " + recipient_closure.keybase);
+
+					// If the gmail transport hasn't been initialized, then initialize it
+					if (transport === null) {
+						transport = nodemailer.createTransport({
+						    service: 'Gmail',
+						    auth: {
+						        user: shell.settings()[0].options.user,
+						        pass: shell.settings()[0].options.password
+						    }
+						});
+					}
+
+					var mailOptions = {
+				    from: 'Andrew Hassan <andrewihassan@gmail.com>', // sender address
+				    to: 'andrewihassan@gmail.com', // list of receivers
+				    subject: 'Test', // Subject line
+				    text: 'Hello world ✔', // plaintext body
+				    html: '<b>Hello world ✔</b>' // html body
+					};
+					debugger;
+					transport.sendMail(mailOptions, function(error, info) {
+				    if(error){
+				        console.log(error);
+				    }else{
+				        console.log('Message sent: ' + info.response);
+				    }
+					});
+
+				});
 			}
 		}
 
-		console.log("Sending email");
 		return false;
 	});
 });
