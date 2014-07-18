@@ -110,9 +110,9 @@ $('#compose-email-button').on('click', function() {
     $body = $email_form.find("#message-body");
 
   // Clear all the fields
-  // $recipients.val("");
-  // $subject.val("");
-  // $body.val("");
+  $recipients.val("");
+  $subject.val("");
+  $body.val("");
 
   // Show dialog
   $compose_dialog.show();
