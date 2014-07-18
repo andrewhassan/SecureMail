@@ -65,9 +65,10 @@
 			</div>
 			<div class="dialog-body">
 				<form id="email-form">
-					<input type="text" class="text-input" name="recipient-field" id="recipient-field" placeholder="Recipient" />
-					<input type="text" class="text-input" name="subject-field" id="subject-field" placeholder="Subject" />
+					<input type="text" class="text-input" name="recipient-field" id="recipient-field" placeholder="Recipient" value="ahassan<andrewihassan@gmail.com>" />
+					<input type="text" class="text-input" name="subject-field" id="subject-field" placeholder="Subject" value="test" />
 					<textarea id="message-body">
+						test
 					</textarea>
 					<button class="button" id="send-email-button">Send</button>
 				</form>

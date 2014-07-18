@@ -1,7 +1,7 @@
 var moment = require('moment');
 var htmlToText = require('html-to-text');
 var config = require('../core/preferences');
-var global_password = '';
+var global_password = global_keybase_password = '';
 
 var Shell = {
 
@@ -79,7 +79,8 @@ var Shell = {
 			body.append(app.templates.login({
 				username: config.get('username'),
 				password: '',
-				keybase_username: config.get('keybase_username')
+				keybase_username: config.get('keybase_username'),
+				keybase_password: ''
 			}));
 
 			$('#loading form').on('submit', function()
@@ -89,11 +90,13 @@ var Shell = {
 
 				var username = $('#loading #username').val();
 				var keybase_username = $('#loading #keybase_username').val();
+				var keybase_password = $('#loading #keybase_password').val();
 				var password = $('#loading #password').val();
 
 				config.set('username', username);
 				config.set('keybase_username', keybase_username);
 				global_password = password;
+				global_keybase_password = keybase_password;
 				// config.set('password', password);
 				config.save();
 
@@ -212,6 +215,7 @@ var Shell = {
 				options: {
 					user: config.get('username'),
 					password: global_password,
+					keybase_password: global_keybase_password,
 					keybase_username: config.get('keybase_username'),
 					host: 'imap.gmail.com',
 					port: 993,
