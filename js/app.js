@@ -234,7 +234,7 @@ $('#compose-email-button').on('click', function() {
           }
 
           var mailOptions = {
-            from: shell.settings()[0].options.keybase_username, // sender address
+            from: shell.settings()[0].options.keybase_username + "<" + shell.settings()[0].options.user + ">", // sender address
             to: recipient_closure.email, // list of receivers
             subject: $subject.val(), // Subject line
             text: message, // plaintext body
@@ -244,6 +244,8 @@ $('#compose-email-button').on('click', function() {
                 console.log(error);
             }else{
                 console.log('Message sent: ' + info.response);
+                $('.dialog-overlay').hide();
+                alert('Message sent successfully!');
             }
           });
 

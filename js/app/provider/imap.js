@@ -4,264 +4,213 @@ var IMAP = require('imap');
 var inbox = require('inbox');
 var stream_to = require('stream-to');
 var MP = require('mailparser').MailParser;
+var EP = require('exec-plan').ExecPlan;
+var request = require('request');
+var openpgp = require('openpgp');
+
+function blah(cb) {
+  cb();
+}
+
+function getPrivateKey(username, callback, data) {
+  var exec_plan = new EP({
+    autoPrintOut: false,
+    autoPrintErr: false,
+    continueOnError: true
+  });
+
+  if (typeof(callback) !== "function") {
+    callback = function() {};
+    console.warn("Invalid parameter passed to callback");
+  }
+
+  exec_plan.add("gpg --export-secret-key -a \"" + username + "\"");
+  exec_plan.execute();
+  exec_plan.on('complete', function(stdout) {
+    callback(stdout, data);
+  });
+}
 
 var ImapProvider = function()
 {
-	BaseProvider.apply(this, arguments);
+  BaseProvider.apply(this, arguments);
 };
 
 Util.inherits(ImapProvider, BaseProvider);
 
 ImapProvider.prototype = {
-	getInfo: function()
-	{
-		return {
-			id: 'imap',
-			label: 'IMAP',
-			description: 'IMAP Provider',
-			icon: 'img/email.png'
-		};
-	},
+  getInfo: function()
+  {
+    return {
+      id: 'imap',
+      label: 'IMAP',
+      description: 'IMAP Provider',
+      icon: 'img/email.png'
+    };
+  },
 
-	initialize: function(config)
-	{
-		var self = this;
+  initialize: function(config)
+  {
+    var self = this;
 
-		ImapProvider.super_.prototype.initialize.apply(self, arguments);
+    ImapProvider.super_.prototype.initialize.apply(self, arguments);
 
-		// self.imap = new IMAP(self.config);
+    // Create inbox connection
+    self.imapConnection = inbox.createConnection(self.config.port, self.config.host, {
+      secureConnection: self.config.tls,
+      auth: {
+        user: self.config.user,
+        pass: self.config.password
+      }
+    });
+  },
 
-		// self.imap.once('error', function(err)
-		// {
-		// 	console.log(err);
-		// });
+  connect: function()
+  {
+    var self = this;
+    self.ready = false;
 
-		// self.imap.once('end', function()
-		// {
-		// 	console.log('Connection ended');
-		// });
+    var d = $.Deferred(function()
+    {
+      var def = this;
 
-		// Create inbox connection
-		self.imapConnection = inbox.createConnection(self.config.port, self.config.host, {
-			secureConnection: self.config.tls,
-			auth: {
-				user: self.config.user,
-				pass: self.config.password
-			}
-		});
-	},
+      self.imapConnection.on('connect', function() {
+        console.log('connection ready');
+        self.ready = true;
+        def.resolve(self);
+      });
 
-	connect: function()
-	{
-		var self = this;
-		self.ready = false;
+      self.imapConnection.connect();
+      console.log('connected');
+    });
 
-		var d = $.Deferred(function()
-		{
-			var def = this;
+    return d;
+  },
 
-			// self.imap.once('ready', function()
-			// {
-			// 	console.log('connection ready');
+  disconnect: function()
+  {
+    var self = this;
+    self.imapConnection.on('close', function() {
+      console.log('disconnected');
+    });
+    self.imapConnection.close();
+  },
 
-			// 	self.ready = true;
-			// 	def.resolve(self);
-			// });
+  openInbox: function(callback)
+  {
+    var self = this;
+    self.imapConnection.openMailbox('INBOX', {readOnly: true}, callback);
+  },
 
-			// self.imap.connect();
+  prepare: function() {
+    var self = this;
 
-			//console.log("Deferred connect: " + Util.inspect(self));
+    var d = $.Deferred(function()
+    {
+      var def = this;
 
-			self.imapConnection.on('connect', function() {
-				console.log('connection ready');
-				self.ready = true;
-				def.resolve(self);
-			});
+      if (self.ready)
+      {
+        self.openInbox(function(err, box)
+        {
+          if (err)
+          {
+            console.log('ERROR', err);
+            def.resolve([]);
+            return;
+          }
 
-			self.imapConnection.connect();
-			console.log('connected');
-		});
+          var num_finished = 0;
+          self.messages = [];
 
-		return d;
-	},
+          // List 30 messages for now
+          self.imapConnection.listMessages(-30, 30, function(err, messages) {
+            if (err) { console.log ("There was an error fetching messages: " + err); }
 
-	disconnect: function()
-	{
-		var self = this;
-		self.imapConnection.on('close', function() {
-			console.log('disconnected');
-		});
-		self.imapConnection.close();
-	},
+            var num_messages = messages.length,
+              loaded_messages = 0;
 
-	openInbox: function(callback)
-	{
-		var self = this;
-		self.imapConnection.openMailbox('INBOX', {readOnly: true}, callback);
-	},
+            // Load the content for each message
+            for (var m in messages) {
+              var message = messages[m],
+                mailparser = new MP({
+                  streamAttachments: true
+                }),
+                message_stream = self.imapConnection.createMessageStream(message.UID).pipe(mailparser);
 
-	prepare: function() {
-		var self = this;
+              mailparser.on('end', function(email) {
+                message.html = email.html;
+                message.text = email.text;
 
-		var d = $.Deferred(function()
-		{
-			var def = this;
+                // If the message is encrypted
+                if (email.text !== null && typeof(email.text) === 'string' && email.text.indexOf('-----BEGIN PGP MESSAGE-----') === 0) {
+                  var sender_keybase_username = email.from[0].name;
+                  var sender_email = email.from[0].address;
+                  request('https://keybase.io/_/api/1.0/user/lookup.json?usernames=' + sender_keybase_username,
+                    function (error, response, body) {
+                    if (!error && response.statusCode == 200) {
+                      var email_closure_1 = email;
+                      var keybase_username_closure_1 = sender_keybase_username;
+                      var sender_email_closure_1 = sender_email;
+                      var public_key_bundle = JSON.parse(body).them[0].public_keys.primary.bundle;
 
-			if (self.ready)
-			{
-				self.openInbox(function(err, box)
-				{
-					if (err)
-					{
-						console.log('ERROR', err);
-						def.resolve([]);
-						return;
-					}
+                      getPrivateKey(keybase_username_closure_1, function(private_key_string) {
+                        var public_key_bundle_closure_1 = public_key_bundle;
+                        var email_closure_2 = email_closure_1;
 
-					var num_finished = 0;
-					self.messages = [];
+                        var pgp_message = openpgp.message.readArmored(email_closure_2.text);
+                        var pgp_public_key = openpgp.key.readArmored(public_key_bundle_closure_1).keys;
+                        var pgp_private_key = openpgp.key.readArmored(private_key_string).keys[0];
+                        pgp_private_key.decrypt(self.config.keybase_password);
 
-					// List 30 messages for now
-					self.imapConnection.listMessages(-30, 30, function(err, messages) {
-						if (err) { console.log ("There was an error fetching messages: " + err); }
+                        var message = openpgp.decryptAndVerifyMessage(pgp_private_key, pgp_public_key, pgp_message);
 
-						var num_messages = messages.length,
-							loaded_messages = 0;
+                        email_closure_2.text = message.text;
+                        self.messages.push(email_closure_2);
+                        num_finished++;
+                      });
+                    }
+                  });
+                }
+                else {
+                  self.messages.push(email);
+                  num_finished++;
+                }
 
-						// Load the content for each message
-						for (var m in messages) {
-							var message = messages[m],
-								mailparser = new MP({
-									streamAttachments: true
-								}),
-								message_stream = self.imapConnection.createMessageStream(message.UID).pipe(mailparser);
+                if (num_finished === messages.length) {
+                  def.resolve(self);
+                }
+              });
+            }
+          });
+        });
+        return;
+      }
+      def.resolve([]);
+    });
 
-				      mailparser.on('end', function(email) {
-				      	num_finished++;
-				        message.html = email.html;
-				        message.text = email.text;
+    return d;
+  },
 
-				        self.messages.push(email);
+  fetchMessages: function()
+  {
+    return this.messages;
+  },
 
-				        if (num_finished === messages.length) {
-				        	def.resolve(self);
-				        }
-				      });
-						}
-					});
+  fetchFolders: function()
+  {
 
-					// var f = self.imap.seq.fetch('1:*', { bodies: '' });
-					// self.messages = [];
+  },
 
-					// var len = 0;
+  fetchLabels: function()
+  {
 
-					// f.on('message', function(msg, seqno)
-					// {
-					// 	console.log('Message #%d', seqno);
-					// 	len++;
+  },
 
-					// 	var prefix = '(#' + seqno + ') ';
-					// 	var attrs = {};
-					// 	msg.on('body', function(stream, info)
-					// 	{
-					// 		var mailparser = new MailParser({
-					// 			streamAttachments: true
-					// 		});
-					// 		mailparser.on("end", function(m)
-					// 		{
-					// 			$.each(attrs.flags, function(i, a)
-					// 			{
-					// 				/*
-					// 			    Flags:
-					// 			    \Seen		Message has been read
-					// 			    \Answered 	Message has been answered
-					// 			    \Flagged 	Message is "flagged" for urgent/special attention
-					// 			    \Deleted 	Message is marked for removal
-					// 			    \Draft 		Message has not completed composition (marked as a draft).
-					// 			    */
+  fetchMessage: function(id)
+  {
 
-					// 				if (a == '\\Seen')
-					// 				{
-					// 					m.read = true;
-					// 				}
-					// 			});
-
-					// 			$.each(attrs['x-gm-labels'], function(i, a)
-					// 			{
-					// 				/*
-					// 				Labels:
-					// 				\Important	Messages has been marked important
-					// 				\Starred	Messages has been marked important
-					// 				 */
-
-					// 				if (a == '\\Important')
-					// 				{
-					// 					m.important = true;
-					// 				}
-					// 				if (a == '\\Starred')
-					// 				{
-					// 					m.starred = true;
-					// 				}
-					// 			});
-
-					// 			m.attrs = attrs;
-
-					// 			console.log(prefix + 'Parsed');
-					// 			//console.log(m);
-					// 			self.messages.push(m);
-
-					// 			if (self.messages.length == len)
-					// 			{
-					// 				def.resolve(self);
-					// 			}
-					// 		});
-					// 		stream.pipe(mailparser);
-					// 	});
-
-					// 	msg.once('attributes', function(a)
-					// 	{
-					// 		attrs = a;
-					// 	});
-					// });
-
-					// f.once('error', function(err)
-					// {
-					// 	console.log('Fetch error: ' + err);
-					// });
-
-					// f.once('end', function()
-					// {
-					// 	console.log('Done fetching all messages!');
-					// });
-
-				});
-				return;
-			}
-			def.resolve([]);
-		});
-
-		return d;
-	},
-
-	fetchMessages: function()
-	{
-		return this.messages;
-	},
-
-	fetchFolders: function()
-	{
-
-	},
-
-	fetchLabels: function()
-	{
-
-	},
-
-	fetchMessage: function(id)
-	{
-
-	}
+  }
 };
 
 module.exports = ImapProvider;
