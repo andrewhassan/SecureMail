@@ -50,6 +50,10 @@ BaseProvider.prototype = {
 	fetchMessage: function(id)
 	{
 
+	},
+
+	sendMessage: function(recipient, subject, body, recipient_type) {
+		recipient_type = recipient_type || 'email';
 	}
 };
 

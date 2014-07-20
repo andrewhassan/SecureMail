@@ -9,6 +9,12 @@
 			<div class="password-wrapper">
 				<label for="password">Password</label><input tabindex="2" id="password" type="password" placeholder="password" value="{{=it.password || ''}}">
 			</div>
+			<div class="username-wrapper">
+				<label for="keybase_username">Keybase</label><input tabindex="3" id="keybase_username" type="text" placeholder="keybase username" value="{{=it.keybase_username || ''}}">
+			</div>
+			<div class="password-wrapper">
+				<label for="keybase_password">Passphrase</label><input tabindex="4" id="keybase_password" type="password" placeholder="keybase password" value="{{=it.password || ''}}">
+			</div>
 			<button type="submit" class="login-button">Sign in</button>
 		</form>
 	</div>
