@@ -168,6 +168,9 @@ ImapProvider.prototype = {
                         email_closure_2.text = message.text;
                         self.messages.push(email_closure_2);
                         num_finished++;
+                        if (num_finished === messages.length) {
+                          def.resolve(self);
+                        }
                       });
                     }
                   });
