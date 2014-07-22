@@ -44,12 +44,6 @@
 				</div>
 
 				<div class="bar" class="disabled">
-					<button id="star-button" title="Toggle Star Status"><i class="icon fa fa-star-o"></i></button>
-					<button id="read-button" title="Toggle Read Status"><i class="icon fa fa-circle-o"></i></button>
-					<button id="reply-button" title="Reply"><i class="icon fa fa-mail-reply"></i></button>
-					<button id="forward-button" title="Forward"><i class="icon fa fa-mail-forward"></i></button>
-
-					<button id="settings-button" title="Settings"><i class="icon fa fa-cog"></i></button>
 				</div>
 			</div>
 
