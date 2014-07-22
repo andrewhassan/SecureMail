@@ -256,3 +256,48 @@ $('#compose-email-button').on('click', function() {
     return false;
   });
 });
+
+$('#refresh-messages-button').on('click', function() {
+  $('#overlay').show();
+  $("#messages-list").empty();
+
+  var settings = shell.settings();
+
+  $.each(global_providers, function(i, o)
+  {
+    o.initialize(shell.settings()[0].options);
+    o.connect().then(
+      function()
+      {
+        console.log("authentication successful!");
+        if (global_providers.length > 0)
+        {
+          $.when.apply($, global_providers).done(function()
+          {
+            var prepares = [];
+            $.each(arguments, function(i, p)
+            {
+              prepares.push(p.prepare());
+            });
+
+            var messages = [];
+            $.when.apply($, prepares).done(function()
+            {
+              $.each(global_providers, function(i, p) {
+                var msgs = p.fetchMessages();
+                messages = messages.concat(msgs);
+                p.disconnect();
+              });
+
+              shell.list(messages);
+            });
+          });
+        }
+      },
+      function()
+      {
+        console.log("authentication falied!");
+      }
+    );
+  });
+});

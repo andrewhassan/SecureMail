@@ -81,7 +81,6 @@ ImapProvider.prototype = {
       });
 
       self.imapConnection.connect();
-      console.log('connected');
     });
 
     return d;
@@ -90,6 +89,7 @@ ImapProvider.prototype = {
   disconnect: function()
   {
     var self = this;
+    self.ready = false;
     self.imapConnection.on('close', function() {
       console.log('disconnected');
     });
@@ -103,6 +103,7 @@ ImapProvider.prototype = {
   },
 
   prepare: function() {
+    debugger;
     var self = this;
 
     var d = $.Deferred(function()

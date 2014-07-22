@@ -34,8 +34,8 @@
 				</ul>
 
 				<div class="bar">
-					<button id="load-more-button" title="Load More"><i class="icon fa fa-download"></i> </button>
 					<button id="compose-email-button" title="Compose Email"><i class="icon fa fa-plus"></i> </button>
+					<button id="refresh-messages-button" title="Refresh Messages"><i class="icon fa fa-refresh"></i> </button>
 				</div>
 			</div>
 
