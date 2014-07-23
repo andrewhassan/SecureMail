@@ -119,6 +119,7 @@ $('#compose-email-button').on('click', function() {
 
   $close_button.on('click', function() {
     // TODO: If there's stuff entered, ask if you want to discard it
+    $('#email-form').unbind('submit');
     $compose_dialog.hide();
   });
 
@@ -180,11 +181,16 @@ $('#compose-email-button').on('click', function() {
           });
         }
 
+        console.log("Before plain send");
         transport.sendMail(mailOptions, function(error, info) {
+          console.log("In plain send");
           if(error){
               console.log(error);
-          }else{
+          } else{
               console.log('Message sent: ' + info.response);
+              $('#email-form').unbind('submit');
+              $('.dialog-overlay').hide();
+              alert('Message sent successfully!');
           }
         });
       }
@@ -239,11 +245,15 @@ $('#compose-email-button').on('click', function() {
             subject: $subject.val(), // Subject line
             text: message, // plaintext body
           };
+
+          console.log("Before encrypted send");
           transport.sendMail(mailOptions, function(error, info) {
+            console.log("In encrypted send");
             if(error){
                 console.log(error);
             }else{
                 console.log('Message sent: ' + info.response);
+                $('#email-form').unbind('submit');
                 $('.dialog-overlay').hide();
                 alert('Message sent successfully!');
             }
