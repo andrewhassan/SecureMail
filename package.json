@@ -22,7 +22,9 @@
     "openpgp": "~0.7.1",
     "exec-plan": "0.0.3",
     "nodemailer": "~1.0.3",
-    "request": "~2.37.0"
+    "request": "~2.37.0",
+    "log4js": "~0.6.16",
+    "MD5": "~1.2.1"
   },
   "devDependencies": {
     "mocha": "~1.17.1",

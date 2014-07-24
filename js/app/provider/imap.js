@@ -99,6 +99,7 @@ ImapProvider.prototype = {
   openInbox: function(callback)
   {
     var self = this;
+    process.logger.info(self.config.user + ": Opened inbox");
     self.imapConnection.openMailbox('INBOX', {readOnly: true}, callback);
   },
 
@@ -126,6 +127,7 @@ ImapProvider.prototype = {
 
           // List 30 messages for now
           self.imapConnection.listMessages(-30, 30, function(err, messages) {
+            process.logger.info(self.config.user + ": Retrieved inbox messages");
             if (err) { console.log ("There was an error fetching messages: " + err); }
 
             var num_messages = messages.length,

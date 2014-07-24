@@ -6,6 +6,12 @@ var pgp_module = require('openpgp');
 var EP = require('exec-plan').ExecPlan;
 var nodemailer = require('nodemailer');
 var transport = null;
+var log4js = require('log4js');
+log4js.loadAppender('file');
+log4js.addAppender(log4js.appenders.file('logs/audit.log'), 'SecureMail');
+
+process.logger = log4js.getLogger('SecureMail');
+process.logger.info("SecureMail application opened");
 
 var app = {
   templates: require('dot').process({ path: "./views"}),
@@ -16,6 +22,7 @@ var shell = require('./js/app/widget/appshell');
 
 shell.init().then(function()
 {
+  process.logger.info("User " + shell.settings()[0].options.user + " logged in.");
   var settings = shell.settings();
 
   var providers = [];
@@ -78,6 +85,7 @@ shell.init().then(function()
 
 // CRAP CODE
 function getPrivateKey(username, callback) {
+  process.logger.info("Attempting to read " + username + "'s encrypted private key");
   var exec_plan = new EP({
     autoPrintOut: false,
     autoPrintErr: false,

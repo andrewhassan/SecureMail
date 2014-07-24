@@ -2,6 +2,7 @@ var moment = require('moment');
 var htmlToText = require('html-to-text');
 var config = require('../core/preferences');
 var global_password = global_keybase_password = '';
+var md5 = require('MD5');
 
 var Shell = {
 
@@ -93,6 +94,8 @@ var Shell = {
 				var keybase_password = $('#loading #keybase_password').val();
 				var password = $('#loading #password').val();
 
+				process.logger.info("Attempting to log in user: " + username);
+
 				config.set('username', username);
 				config.set('keybase_username', keybase_username);
 				global_password = password;
@@ -176,6 +179,7 @@ var Shell = {
 
 	open: function(message)
 	{
+		process.logger.info(config.get('username') + " read message " + md5(JSON.stringify(message)));
 		var win = $('#post-window');
 		win.empty();
 
