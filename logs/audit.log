@@ -34,3 +34,213 @@
 [2014-07-23 23:39:15.500] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
 [2014-07-23 23:39:22.869] [INFO] SecureMail - andrewihassan@gmail.com read message b8988cb4283864dab66a9eba417d1c12
 [2014-07-23 23:39:25.137] [INFO] SecureMail - andrewihassan@gmail.com read message bb9802499ca6ce5e3dfb7ac217437364
+[2014-07-25 12:53:45.116] [INFO] SecureMail - SecureMail application opened
+[2014-07-25 12:53:56.098] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-25 12:53:56.100] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-25 12:53:57.111] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-25 12:53:57.655] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-25 12:54:38.153] [INFO] SecureMail - SecureMail application opened
+[2014-07-25 12:54:43.033] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-25 12:54:43.035] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-25 12:54:44.255] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-25 12:54:44.573] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-25 12:54:56.152] [INFO] SecureMail - andrewihassan@gmail.com read message fa12666d455a72e38e4cec2b675fd8df
+[2014-07-30 10:11:54.727] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 10:12:00.860] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 10:12:00.862] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 10:12:01.666] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 10:12:02.205] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 10:12:07.482] [INFO] SecureMail - andrewihassan@gmail.com read message db1ae9a907ef832f91cf499ce122f416
+[2014-07-30 10:12:08.195] [INFO] SecureMail - andrewihassan@gmail.com read message a721026a1a9bc918596c894163eca557
+[2014-07-30 10:12:08.953] [INFO] SecureMail - andrewihassan@gmail.com read message b8866d20c785c3196bc950fc850b12d5
+[2014-07-30 10:12:12.776] [INFO] SecureMail - andrewihassan@gmail.com read message be217a97a9fb7ca6fc8ef82fc14e5b87
+[2014-07-30 10:12:27.219] [INFO] SecureMail - Attempting to read ahassan's encrypted private key
+[2014-07-30 10:12:36.858] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 10:12:37.196] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 10:12:42.166] [INFO] SecureMail - andrewihassan@gmail.com read message 90c32db46899929d3865cee0023f764d
+[2014-07-30 13:54:41.263] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 13:54:46.383] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 13:54:46.386] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 13:54:47.512] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 13:54:47.909] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 13:56:03.948] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 13:56:08.899] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 13:56:08.902] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 13:56:09.428] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 13:56:09.778] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 13:56:20.105] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 13:56:26.795] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 13:56:26.801] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 13:56:31.055] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 13:56:33.607] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 13:56:55.292] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 13:57:03.304] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 13:57:03.310] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 13:57:13.611] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 13:57:19.962] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 13:57:28.228] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 13:57:28.228] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 13:58:01.722] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 13:59:54.061] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 13:59:54.067] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 13:59:56.625] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 13:59:58.174] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:00:08.071] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:00:18.925] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 14:00:18.932] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 14:00:22.047] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:00:24.554] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:00:57.073] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:01:05.934] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 14:01:05.941] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 14:01:09.380] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:01:10.985] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:01:49.360] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:02:04.568] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 14:02:04.575] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 14:02:05.320] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:02:07.873] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:03:15.825] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:03:25.345] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 14:03:25.351] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 14:03:26.023] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:03:26.336] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:04:58.560] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:05:12.512] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 14:05:12.519] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 14:05:13.199] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:05:13.511] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:05:28.440] [INFO] SecureMail - andrewihassan@gmail.com read message e1f4368dceb7c9627aa345de63277130
+[2014-07-30 14:05:29.487] [INFO] SecureMail - andrewihassan@gmail.com read message 731ce34e219410bd73568d2e43d1a3e4
+[2014-07-30 14:05:55.076] [INFO] SecureMail - andrewihassan@gmail.com read message e3e6dda9c1f567316d432455803f77af
+[2014-07-30 14:05:56.702] [INFO] SecureMail - andrewihassan@gmail.com read message db1ae9a907ef832f91cf499ce122f416
+[2014-07-30 14:05:57.311] [INFO] SecureMail - andrewihassan@gmail.com read message e65559bef931462c3d52d68ca7bbe4fd
+[2014-07-30 14:05:58.607] [INFO] SecureMail - andrewihassan@gmail.com read message a721026a1a9bc918596c894163eca557
+[2014-07-30 14:06:14.391] [INFO] SecureMail - Attempting to read ahassan's encrypted private key
+[2014-07-30 14:06:23.954] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:06:24.315] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:06:33.372] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:06:33.372] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:06:38.942] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 14:06:38.942] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 14:06:38.943] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 14:06:38.943] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 14:06:39.368] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:06:39.368] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:06:39.672] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:06:39.672] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:06:46.140] [INFO] SecureMail - andrewihassan@gmail.com read message 90c32db46899929d3865cee0023f764d
+[2014-07-30 14:06:46.140] [INFO] SecureMail - andrewihassan@gmail.com read message 90c32db46899929d3865cee0023f764d
+[2014-07-30 14:07:20.144] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:07:26.813] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 14:07:26.816] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 14:07:27.440] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:07:27.750] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:07:34.337] [INFO] SecureMail - andrewihassan@gmail.com read message 8f4d0236f59f139dcf3fe99c24c5bc7e
+[2014-07-30 14:07:35.540] [INFO] SecureMail - andrewihassan@gmail.com read message 90c32db46899929d3865cee0023f764d
+[2014-07-30 14:07:36.531] [INFO] SecureMail - andrewihassan@gmail.com read message 8f4d0236f59f139dcf3fe99c24c5bc7e
+[2014-07-30 14:07:38.310] [INFO] SecureMail - andrewihassan@gmail.com read message e1f4368dceb7c9627aa345de63277130
+[2014-07-30 14:07:39.060] [INFO] SecureMail - andrewihassan@gmail.com read message 8f4d0236f59f139dcf3fe99c24c5bc7e
+[2014-07-30 14:07:39.707] [INFO] SecureMail - andrewihassan@gmail.com read message e1f4368dceb7c9627aa345de63277130
+[2014-07-30 14:07:40.498] [INFO] SecureMail - andrewihassan@gmail.com read message 731ce34e219410bd73568d2e43d1a3e4
+[2014-07-30 14:07:41.620] [INFO] SecureMail - andrewihassan@gmail.com read message 8f4d0236f59f139dcf3fe99c24c5bc7e
+[2014-07-30 14:09:20.505] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:09:20.881] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:09:54.296] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:09:56.834] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:14:24.083] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:14:24.393] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:14:31.576] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:14:31.945] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:15:59.628] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:16:06.323] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 14:16:06.327] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 14:16:10.743] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:16:11.048] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:16:19.019] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:16:19.019] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:16:33.715] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:17:37.771] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 14:17:37.774] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 14:17:38.935] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:17:39.270] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:18:04.950] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:18:14.629] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 14:18:14.633] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 14:18:15.279] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:18:15.644] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:18:36.263] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:18:43.881] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 14:18:43.885] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 14:18:44.537] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:18:44.806] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:19:14.668] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:14.668] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:15.830] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:15.830] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:15.830] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.310] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.310] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.310] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.310] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.455] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.455] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.455] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.455] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.455] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.641] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.641] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.641] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.641] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.641] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.641] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.768] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.768] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.768] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.768] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.768] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.768] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.768] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.905] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.905] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.905] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.905] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.905] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.905] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.905] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:16.905] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:20.348] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:19:29.133] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 14:19:29.136] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 14:19:32.578] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:19:32.901] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:19:50.916] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:20:06.846] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 14:20:06.849] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 14:20:13.509] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:20:13.880] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:20:34.790] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:20:40.158] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 14:20:40.160] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 14:20:40.615] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:20:40.912] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:20:50.364] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:20:58.214] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 14:20:58.219] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 14:21:01.396] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:21:01.774] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:21:23.366] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:21:31.399] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 14:21:31.403] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 14:21:33.873] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:21:34.161] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:23:19.033] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:23:28.219] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 14:23:28.222] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 14:23:30.984] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:23:31.306] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages
+[2014-07-30 14:23:59.380] [INFO] SecureMail - SecureMail application opened
+[2014-07-30 14:24:04.618] [INFO] SecureMail - Attempting to log in user: andrewihassan@gmail.com
+[2014-07-30 14:24:04.620] [INFO] SecureMail - User andrewihassan@gmail.com logged in.
+[2014-07-30 14:24:05.121] [INFO] SecureMail - andrewihassan@gmail.com: Opened inbox
+[2014-07-30 14:24:05.416] [INFO] SecureMail - andrewihassan@gmail.com: Retrieved inbox messages

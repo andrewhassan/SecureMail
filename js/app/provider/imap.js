@@ -104,7 +104,6 @@ ImapProvider.prototype = {
   },
 
   prepare: function() {
-    debugger;
     var self = this;
 
     var d = $.Deferred(function()
@@ -151,9 +150,10 @@ ImapProvider.prototype = {
                   var sender_email = email.from[0].address;
                   request('https://keybase.io/_/api/1.0/user/lookup.json?usernames=' + sender_keybase_username,
                     function (error, response, body) {
-                    if (!error && response.statusCode == 200) {
+                    if (!error && response.statusCode === 200 && JSON.parse(body).status.code === 0) {
+                      debugger;
                       var email_closure_1 = email;
-                      var keybase_username_closure_1 = sender_keybase_username;
+                      var keybase_username_closure_1 = self.config.keybase_username;
                       var sender_email_closure_1 = sender_email;
                       var public_key_bundle = JSON.parse(body).them[0].public_keys.primary.bundle;
 
@@ -161,20 +161,32 @@ ImapProvider.prototype = {
                         var public_key_bundle_closure_1 = public_key_bundle;
                         var email_closure_2 = email_closure_1;
 
-                        var pgp_message = openpgp.message.readArmored(email_closure_2.text);
-                        var pgp_public_key = openpgp.key.readArmored(public_key_bundle_closure_1).keys;
-                        var pgp_private_key = openpgp.key.readArmored(private_key_string).keys[0];
-                        pgp_private_key.decrypt(self.config.keybase_password);
+                        try {
+                          var pgp_message = openpgp.message.readArmored(email_closure_2.text);
+                          var pgp_public_key = openpgp.key.readArmored(public_key_bundle_closure_1).keys;
+                          var pgp_private_key = openpgp.key.readArmored(private_key_string).keys[0];
+                          pgp_private_key.decrypt(self.config.keybase_password);
 
-                        var message = openpgp.decryptAndVerifyMessage(pgp_private_key, pgp_public_key, pgp_message);
+                          var message = openpgp.decryptAndVerifyMessage(pgp_private_key, pgp_public_key, pgp_message);
 
-                        email_closure_2.text = message.text;
-                        self.messages.push(email_closure_2);
+                          email_closure_2.text = message.text;
+                          self.messages.push(email_closure_2);
+                        }
+                        catch(e) {
+                          console.log("Error verifying/decrypting: " + e);
+                        }
+
                         num_finished++;
                         if (num_finished === messages.length) {
                           def.resolve(self);
                         }
                       });
+                    }
+                    else {
+                      num_finished++;
+                      if (num_finished === messages.length) {
+                        def.resolve(self);
+                      }
                     }
                   });
                 }
